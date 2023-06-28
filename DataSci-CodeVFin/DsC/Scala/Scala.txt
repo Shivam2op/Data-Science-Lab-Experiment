@@ -1,0 +1,45 @@
+itosl12@itosl12-OptiPlex-3070:~$ scala
+Welcome to Scala 2.11.12 (OpenJDK 64-Bit Server VM, Java 11.0.16).
+Type in expressions for evaluation. Or try :help.
+
+scala> // Scala program
+
+scala> // for s interpolator
+
+scala> 
+
+scala> // Creating object
+
+scala> object GFG
+defined object GFG
+
+scala> {
+     |   // adding two numbers
+     |   def add(a:Int, b:Int):Int
+     |   =
+     |   {
+     |           a+b
+     |   }
+     |   
+     |   // Main method
+     |   def main(args:Array[String])
+     |   {
+     |   
+     |           val x = 20
+     |           val y = 10
+     |   
+     |           // without s interpolator
+     |           val str1 = "Sum of $x and $y is ${add(x, y)}"
+     | 
+     |           // with s interpolator
+     |           val str2 = s"Sum of $x and $y is ${add(x, y)}"
+     |   
+     |           println("str1: " + str1)
+     |           println("str2: " + str2)
+     |   }
+     | }
+
+scala> 10+99
+res1: Int = 109
+
+scala>

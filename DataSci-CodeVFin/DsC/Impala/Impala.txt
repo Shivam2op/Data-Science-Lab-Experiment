@@ -1,0 +1,136 @@
+$ impala-shell -i localhost --quiet
+Starting Impala Shell without Kerberos authentication
+Welcome to the Impala shell. Press TAB twice to see a list of available commands.
+
+Copyright (c) 2012 Cloudera, Inc. All rights reserved.
+
+(Shell build version: Impala Shell v...
+[localhost:21000] > select version();
++-------------------------------------------
+| version()
++-------------------------------------------
+| impalad version ...
+| Built on ...
++-------------------------------------------
+[localhost:21000] > show databases;
++--------------------------+
+| name                     |
++--------------------------+
+| _impala_builtins         |
+| ctas                     |
+| d1                       |
+| d2                       |
+| d3                       |
+| default                  |
+| explain_plans            |
+| external_table           |
+| file_formats             |
+| tpc                      |
++--------------------------+
+[localhost:21000] > select current_database();
++--------------------+
+| current_database() |
++--------------------+
+| default            |
++--------------------+
+[localhost:21000] > show tables;
++-------+
+| name  |
++-------+
+| ex_t  |
+| t1    |
++-------+
+[localhost:21000] > show tables in d3;
+
+[localhost:21000] > show tables in tpc;
++------------------------+
+| name                   |
++------------------------+
+| city                   |
+| customer               |
+| customer_address       |
+| customer_demographics  |
+| household_demographics |
+| item                   |
+| promotion              |
+| store                  |
+| store2                 |
+| store_sales            |
+| ticket_view            |
+| time_dim               |
+| tpc_tables             |
++------------------------+
+[localhost:21000] > show tables in tpc like 'customer*';
++-----------------------+
+| name                  |
++-----------------------+
+| customer              |
+| customer_address      |
+| customer_demographics |
++-----------------------+
+[localhost:21000] > create database experiments;
+[localhost:21000] > show databases;
++--------------------------+
+| name                     |
++--------------------------+
+| _impala_builtins         |
+| ctas                     |
+| d1                       |
+| d2                       |
+| d3                       |
+| default                  |
+| experiments              |
+| explain_plans            |
+| external_table           |
+| file_formats             |
+| tpc                      |
++--------------------------+
+[localhost:21000] > show databases like 'exp*';
++---------------+
+| name          |
++---------------+
+| experiments   |
+| explain_plans |
++---------------+
+[localhost:21000] > create table t1 (x int);
+
+[localhost:21000] > show tables;
++------------------------+
+| name                   |
++------------------------+
+| city                   |
+| customer               |
+| customer_address       |
+| customer_demographics  |
+| household_demographics |
+| item                   |
+| promotion              |
+| store                  |
+| store2                 |
+| store_sales            |
+| t1                     |
+| ticket_view            |
+| time_dim               |
+| tpc_tables             |
++------------------------+
+[localhost:21000] > select current_database();
++--------------------+
+| current_database() |
++--------------------+
+| tpc                |
++--------------------+
+[localhost:21000] > alter table t1 rename to experiments.t1;
+[localhost:21000] > use experiments;
+[localhost:21000] > show tables;
++------+
+| name |
++------+
+| t1   |
++------+
+[localhost:21000] > select current_database();
++--------------------+
+| current_database() |
++--------------------+
+| experiments        |
++--------------------+
+
